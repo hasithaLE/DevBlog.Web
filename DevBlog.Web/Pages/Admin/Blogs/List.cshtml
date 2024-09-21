@@ -1,0 +1,29 @@
+﻿@page
+@model DevBlog.Web.Pages.Admin.Blogs.ListModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Blogs List</h1>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var blog in Model.BlogPosts) {
+                <tr>
+                    <td>@blog.Id</td>
+                    <td>@blog.Heading</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

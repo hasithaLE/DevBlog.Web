@@ -20,7 +20,7 @@ namespace DevBlog.Web.Pages.Admin.Blogs
         {
         }
 
-        public void OnPost() 
+        public IActionResult OnPost() 
         {
             var blogPost = new BlogPost
             {
@@ -36,6 +36,8 @@ namespace DevBlog.Web.Pages.Admin.Blogs
             };
             devBlogDbContext.Add(blogPost);
             devBlogDbContext.SaveChanges();
+
+            return RedirectToPage("/Admin/Blogs/List");
         }
     }
 }
