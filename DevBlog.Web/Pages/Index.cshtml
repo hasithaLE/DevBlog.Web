@@ -5,6 +5,43 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (Model.BlogPost != null)
+    {
+        <h1 class="display-4">Latest Blog</h1>
+        <hr/>
+        <div class="d-flex justify-content-center">
+            <div class="card col-sm-10 text-center">
+                <img class="card-img" src="@Model.BlogPost.FeaturedImageUrl" alt="Card image">
+                <div class="img-overlay">
+                    <h5 class="title">@Model.BlogPost.Heading</h5>
+                    <p class="text">@Model.BlogPost.ShortDescription</p>
+                    <p class="text">@Model.BlogPost.PublishedDate</p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1 class="display-4">No blog posts found</h1>
+    }
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        @foreach (var blog in Model.BlogPosts)
+        {
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="card-img-top" src="@blog.FeaturedImageUrl" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Heading</h5>
+                        <p class="card-text">@blog.ShortDescription</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">@blog.PublishedDate</small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

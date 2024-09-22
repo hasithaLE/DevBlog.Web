@@ -24,14 +24,14 @@ namespace DevBlog.Web.Pages.Admin.Blogs
         {
             var blogPost = new BlogPost
             {
-                Heading = AddBlogPostRequest.Heading,
-                PageTitle = AddBlogPostRequest.PageTitle,
-                Content = AddBlogPostRequest.Content,
-                ShortDescription = AddBlogPostRequest.ShortDescription,
-                FeaturedImageUrl = AddBlogPostRequest.FeaturedImageUrl,
-                UrlHandle = AddBlogPostRequest.UrlHandle,
-                PublishedDate = AddBlogPostRequest.PublishedDate,
-                Author = AddBlogPostRequest.Author,
+                Heading = AddBlogPostRequest.Heading ?? "",
+                PageTitle = AddBlogPostRequest.PageTitle ?? "",
+                Content = AddBlogPostRequest.Content ?? "",
+                ShortDescription = AddBlogPostRequest.ShortDescription ?? "",
+                FeaturedImageUrl = AddBlogPostRequest.FeaturedImageUrl ?? "",
+                UrlHandle = AddBlogPostRequest.UrlHandle ?? "",
+                PublishedDate = DateTime.Now,
+                Author = AddBlogPostRequest.Author ?? "",
                 Visible = AddBlogPostRequest.Visible
             };
             await devBlogDbContext.AddAsync(blogPost);
