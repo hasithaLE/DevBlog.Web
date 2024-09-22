@@ -20,7 +20,7 @@ namespace DevBlog.Web.Pages.Admin.Blogs
         {
         }
 
-        public IActionResult OnPost() 
+        public async Task<IActionResult> OnPost() 
         {
             var blogPost = new BlogPost
             {
@@ -34,8 +34,8 @@ namespace DevBlog.Web.Pages.Admin.Blogs
                 Author = AddBlogPostRequest.Author,
                 Visible = AddBlogPostRequest.Visible
             };
-            devBlogDbContext.Add(blogPost);
-            devBlogDbContext.SaveChanges();
+            await devBlogDbContext.AddAsync(blogPost);
+            await devBlogDbContext.SaveChangesAsync();
 
             return RedirectToPage("/Admin/Blogs/List");
         }

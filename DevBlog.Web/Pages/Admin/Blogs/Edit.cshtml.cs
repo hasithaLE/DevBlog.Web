@@ -15,14 +15,14 @@ namespace DevBlog.Web.Pages.Admin.Blogs
         {
             this.devBlogDbContext = devBlogDbContext;
         }
-        public void OnGet(Guid Id)
+        public async Task OnGet(Guid Id)
         {
-            BlogPost = devBlogDbContext.BlogPosts.Find(Id);
+            BlogPost = await devBlogDbContext.BlogPosts.FindAsync(Id);
         }
         
-        public IActionResult OnPostEdit()
+        public async Task<IActionResult> OnPostEdit()
         {
-            var existingBlogPost = devBlogDbContext.BlogPosts.Find(BlogPost.Id);
+            var existingBlogPost = await devBlogDbContext.BlogPosts.FindAsync(BlogPost.Id);
             if (existingBlogPost != null)
             {
                 existingBlogPost.Heading = BlogPost.Heading;
@@ -35,17 +35,17 @@ namespace DevBlog.Web.Pages.Admin.Blogs
                 existingBlogPost.Author = BlogPost.Author;
                 existingBlogPost.Visible = BlogPost.Visible;
             }
-            devBlogDbContext.SaveChanges();
+            await devBlogDbContext.SaveChangesAsync();
             return RedirectToPage("/Admin/Blogs/List");
         }
-        
-        public IActionResult OnPostDelete()
+
+        public async Task<IActionResult> OnPostDelete()
         {
-            var existingBlogPost = devBlogDbContext.BlogPosts.Find(BlogPost.Id);
+            var existingBlogPost = await devBlogDbContext.BlogPosts.FindAsync(BlogPost.Id);
             if (existingBlogPost != null)
             {
                 devBlogDbContext.BlogPosts.Remove(existingBlogPost);
-                devBlogDbContext.SaveChanges();
+                await devBlogDbContext.SaveChangesAsync();
             }
             return RedirectToPage("/Admin/Blogs/List");
         }

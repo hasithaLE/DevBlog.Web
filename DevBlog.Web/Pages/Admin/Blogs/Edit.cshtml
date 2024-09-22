@@ -8,55 +8,64 @@
     </div>
 </div>
 
-<div>
-    <div class="container">
-        <form method="post">
-            <div class="mb-3">
-                <label for="id">Id</label>
-                <input type="text" class="form-control" id="id" asp-for="BlogPost.Id" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="heading">Heading</label>
-                <input type="text" class="form-control" id="heading" asp-for="BlogPost.Heading">
-            </div>
-            <div class="mb-3">
-                <label for="pageTitle">Page Title</label>
-                <input type="text" class="form-control" id="pageTitle" asp-for="BlogPost.PageTitle">
-            </div>
-            <div class="mb-3">
-                <label for="content">Content</label>
-                <textarea class="form-control" id="content" asp-for="BlogPost.Content"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="shortDescription">Short Description</label>
-                <input type="text" class="form-control" id="shortDescription" asp-for="BlogPost.ShortDescription">
-            </div>
-            <div class="mb-3">
-                <label for="featuredImageUrl">Featured Image</label>
-                <input type="text" class="form-control" id="featuredImageUrl" asp-for="BlogPost.FeaturedImageUrl">
-            </div>
-            <div class="mb-3">
-                <label for="urlHandle">Url Handle</label>
-                <input type="text" class="form-control" id="urlHandle" asp-for="BlogPost.UrlHandle">
-            </div>
-            <div class="mb-3">
-                <label for="publishedDate">Published Date</label>
-                <input type="date" class="form-control" id="publishedDate" asp-for="BlogPost.PublishedDate">
-            </div>
-            <div class="mb-3">
-                <label for="author">Author</label>
-                <input type="text" class="form-control" id="author" asp-for="BlogPost.Author">
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="isVisible" asp-for="BlogPost.Visible">
-                <label class="form-check-label" for="isVisible">
-                    Is Visible
-                </label>
-            </div>
-            <div class="mb-3">
-                <button class="btn btn-primary" type="submit" asp-page-handler="Edit">Save</button>
-                <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
-            </div>
-        </form>
+@if (Model.BlogPost != null)
+{
+    <div>
+        <div class="container">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="id">Id</label>
+                    <input type="text" class="form-control" id="id" asp-for="BlogPost.Id" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="heading">Heading</label>
+                    <input type="text" class="form-control" id="heading" asp-for="BlogPost.Heading">
+                </div>
+                <div class="mb-3">
+                    <label for="pageTitle">Page Title</label>
+                    <input type="text" class="form-control" id="pageTitle" asp-for="BlogPost.PageTitle">
+                </div>
+                <div class="mb-3">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" asp-for="BlogPost.Content"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="shortDescription">Short Description</label>
+                    <input type="text" class="form-control" id="shortDescription" asp-for="BlogPost.ShortDescription">
+                </div>
+                <div class="mb-3">
+                    <label for="featuredImageUrl">Featured Image</label>
+                    <input type="text" class="form-control" id="featuredImageUrl" asp-for="BlogPost.FeaturedImageUrl">
+                </div>
+                <div class="mb-3">
+                    <label for="urlHandle">Url Handle</label>
+                    <input type="text" class="form-control" id="urlHandle" asp-for="BlogPost.UrlHandle">
+                </div>
+                <div class="mb-3">
+                    <label for="publishedDate">Published Date</label>
+                    <input type="date" class="form-control" id="publishedDate" asp-for="BlogPost.PublishedDate">
+                </div>
+                <div class="mb-3">
+                    <label for="author">Author</label>
+                    <input type="text" class="form-control" id="author" asp-for="BlogPost.Author">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isVisible" asp-for="BlogPost.Visible">
+                    <label class="form-check-label" for="isVisible">
+                        Is Visible
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" asp-page-handler="Edit">Save</button>
+                    <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+}
+else
+{
+    <div class="container">
+        <p>No blog post found!</p>
+    </div>
+}
