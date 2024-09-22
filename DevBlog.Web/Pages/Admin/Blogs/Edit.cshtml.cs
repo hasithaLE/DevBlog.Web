@@ -19,7 +19,8 @@ namespace DevBlog.Web.Pages.Admin.Blogs
         {
             BlogPost = devBlogDbContext.BlogPosts.Find(Id);
         }
-        public IActionResult OnPost()
+        
+        public IActionResult OnPostEdit()
         {
             var existingBlogPost = devBlogDbContext.BlogPosts.Find(BlogPost.Id);
             if (existingBlogPost != null)
@@ -35,6 +36,17 @@ namespace DevBlog.Web.Pages.Admin.Blogs
                 existingBlogPost.Visible = BlogPost.Visible;
             }
             devBlogDbContext.SaveChanges();
+            return RedirectToPage("/Admin/Blogs/List");
+        }
+        
+        public IActionResult OnPostDelete()
+        {
+            var existingBlogPost = devBlogDbContext.BlogPosts.Find(BlogPost.Id);
+            if (existingBlogPost != null)
+            {
+                devBlogDbContext.BlogPosts.Remove(existingBlogPost);
+                devBlogDbContext.SaveChanges();
+            }
             return RedirectToPage("/Admin/Blogs/List");
         }
     }
