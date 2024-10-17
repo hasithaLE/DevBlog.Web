@@ -19,6 +19,7 @@ namespace DevBlog.Web.Pages
         {
             _logger = logger;
             this.devBlogDbContext = devBlogDbContext;
+
         }
 
         public void OnGet()
